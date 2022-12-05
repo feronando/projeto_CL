@@ -1,0 +1,442 @@
+Analysis & Synthesis report for projeto_CL
+Mon Dec 05 08:45:43 2022
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |projeto_CL|arbiter:AN|state
+  9. State Machine - |projeto_CL|arbiter:AS|state
+ 10. State Machine - |projeto_CL|arbiter:AW|state
+ 11. State Machine - |projeto_CL|arbiter:AE|state
+ 12. Registers Removed During Synthesis
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                 ;
++---------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Dec 05 08:45:43 2022      ;
+; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                   ; projeto_CL                                 ;
+; Top-level Entity Name           ; projeto_CL                                 ;
+; Family                          ; Cyclone V                                  ;
+; Logic utilization (in ALMs)     ; N/A                                        ;
+; Total registers                 ; 308                                        ;
+; Total pins                      ; 66                                         ;
+; Total virtual pins              ; 0                                          ;
+; Total block memory bits         ; 0                                          ;
+; Total DSP Blocks                ; 0                                          ;
+; Total HSSI RX PCSs              ; 0                                          ;
+; Total HSSI PMA RX Deserializers ; 0                                          ;
+; Total HSSI TX PCSs              ; 0                                          ;
+; Total HSSI TX Channels          ; 0                                          ;
+; Total PLLs                      ; 0                                          ;
+; Total DLLs                      ; 0                                          ;
++---------------------------------+--------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; projeto_CL         ; projeto_CL         ;
+; Family name                                                                     ; Cyclone V          ; Cyclone IV GX      ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                       ; Off                ; Off                ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization                                                    ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Synthesis Seed                                                                  ; 1                  ; 1                  ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 8      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                 ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                          ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------+---------+
+; roteamento.vhd                   ; yes             ; User VHDL File  ; C:/altera/13.1/projects/projeto_teste/roteamento.vhd  ;         ;
+; buffer_regs.vhd                  ; yes             ; User VHDL File  ; C:/altera/13.1/projects/projeto_teste/buffer_regs.vhd ;         ;
+; arbiter.vhd                      ; yes             ; User VHDL File  ; C:/altera/13.1/projects/projeto_teste/arbiter.vhd     ;         ;
+; projeto_CL.vhd                   ; yes             ; User VHDL File  ; C:/altera/13.1/projects/projeto_teste/projeto_CL.vhd  ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 379       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 522       ;
+;     -- 7 input functions                    ; 0         ;
+;     -- 6 input functions                    ; 134       ;
+;     -- 5 input functions                    ; 60        ;
+;     -- 4 input functions                    ; 54        ;
+;     -- <=3 input functions                  ; 274       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 308       ;
+;                                             ;           ;
+; I/O pins                                    ; 66        ;
+; Total DSP Blocks                            ; 0         ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 308       ;
+; Total fan-out                               ; 3444      ;
+; Average fan-out                             ; 3.58      ;
++---------------------------------------------+-----------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                              ;
++----------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name        ; Library Name ;
++----------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------+--------------+
+; |projeto_CL                ; 522 (0)           ; 308 (0)      ; 0                 ; 0          ; 66   ; 0            ; |projeto_CL                ; work         ;
+;    |arbiter:AE|            ; 26 (26)           ; 12 (12)      ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|arbiter:AE     ; work         ;
+;    |arbiter:AN|            ; 16 (16)           ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|arbiter:AN     ; work         ;
+;    |arbiter:AS|            ; 16 (16)           ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|arbiter:AS     ; work         ;
+;    |arbiter:AW|            ; 16 (16)           ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|arbiter:AW     ; work         ;
+;    |buffer_regs:BE|        ; 108 (108)         ; 64 (64)      ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|buffer_regs:BE ; work         ;
+;    |buffer_regs:BN|        ; 108 (108)         ; 64 (64)      ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|buffer_regs:BN ; work         ;
+;    |buffer_regs:BS|        ; 108 (108)         ; 64 (64)      ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|buffer_regs:BS ; work         ;
+;    |buffer_regs:BW|        ; 108 (108)         ; 64 (64)      ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|buffer_regs:BW ; work         ;
+;    |roteamento:RE|         ; 4 (4)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|roteamento:RE  ; work         ;
+;    |roteamento:RN|         ; 4 (4)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|roteamento:RN  ; work         ;
+;    |roteamento:RS|         ; 4 (4)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|roteamento:RS  ; work         ;
+;    |roteamento:RW|         ; 4 (4)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |projeto_CL|roteamento:RW  ; work         ;
++----------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------+
+; State Machine - |projeto_CL|arbiter:AN|state                                               ;
++------------------+------------------+------------------+-----------------+-----------------+
+; Name             ; state.stateNorth ; state.stateSouth ; state.stateWest ; state.stateEast ;
++------------------+------------------+------------------+-----------------+-----------------+
+; state.stateEast  ; 0                ; 0                ; 0               ; 0               ;
+; state.stateWest  ; 0                ; 0                ; 1               ; 1               ;
+; state.stateSouth ; 0                ; 1                ; 0               ; 1               ;
+; state.stateNorth ; 1                ; 0                ; 0               ; 1               ;
++------------------+------------------+------------------+-----------------+-----------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------+
+; State Machine - |projeto_CL|arbiter:AS|state                                               ;
++------------------+------------------+------------------+-----------------+-----------------+
+; Name             ; state.stateNorth ; state.stateSouth ; state.stateWest ; state.stateEast ;
++------------------+------------------+------------------+-----------------+-----------------+
+; state.stateEast  ; 0                ; 0                ; 0               ; 0               ;
+; state.stateWest  ; 0                ; 0                ; 1               ; 1               ;
+; state.stateSouth ; 0                ; 1                ; 0               ; 1               ;
+; state.stateNorth ; 1                ; 0                ; 0               ; 1               ;
++------------------+------------------+------------------+-----------------+-----------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------+
+; State Machine - |projeto_CL|arbiter:AW|state                                               ;
++------------------+------------------+------------------+-----------------+-----------------+
+; Name             ; state.stateNorth ; state.stateSouth ; state.stateWest ; state.stateEast ;
++------------------+------------------+------------------+-----------------+-----------------+
+; state.stateEast  ; 0                ; 0                ; 0               ; 0               ;
+; state.stateWest  ; 0                ; 0                ; 1               ; 1               ;
+; state.stateSouth ; 0                ; 1                ; 0               ; 1               ;
+; state.stateNorth ; 1                ; 0                ; 0               ; 1               ;
++------------------+------------------+------------------+-----------------+-----------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------+
+; State Machine - |projeto_CL|arbiter:AE|state                                               ;
++------------------+------------------+------------------+-----------------+-----------------+
+; Name             ; state.stateNorth ; state.stateSouth ; state.stateWest ; state.stateEast ;
++------------------+------------------+------------------+-----------------+-----------------+
+; state.stateEast  ; 0                ; 0                ; 0               ; 0               ;
+; state.stateWest  ; 0                ; 0                ; 1               ; 1               ;
+; state.stateSouth ; 0                ; 1                ; 0               ; 1               ;
+; state.stateNorth ; 1                ; 0                ; 0               ; 1               ;
++------------------+------------------+------------------+-----------------+-----------------+
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++----------------------------------------+-----------------------------------------+
+; Register name                          ; Reason for Removal                      ;
++----------------------------------------+-----------------------------------------+
+; arbiter:AE|AUX[3]                      ; Lost fanout                             ;
+; arbiter:AW|AUX[3]                      ; Lost fanout                             ;
+; arbiter:AS|AUX[3]                      ; Lost fanout                             ;
+; arbiter:AN|AUX[3]                      ; Lost fanout                             ;
+; arbiter:AE|AUX[2]                      ; Lost fanout                             ;
+; arbiter:AW|AUX[2]                      ; Lost fanout                             ;
+; arbiter:AS|AUX[2]                      ; Lost fanout                             ;
+; arbiter:AN|AUX[2]                      ; Lost fanout                             ;
+; arbiter:AE|AUX[1]                      ; Lost fanout                             ;
+; arbiter:AW|AUX[1]                      ; Lost fanout                             ;
+; arbiter:AS|AUX[1]                      ; Lost fanout                             ;
+; arbiter:AN|AUX[1]                      ; Lost fanout                             ;
+; arbiter:AE|AUX[0]                      ; Lost fanout                             ;
+; arbiter:AW|AUX[0]                      ; Lost fanout                             ;
+; arbiter:AS|AUX[0]                      ; Lost fanout                             ;
+; arbiter:AN|AUX[0]                      ; Lost fanout                             ;
+; arbiter:AN|state.stateNorth            ; Merged with arbiter:AE|state.stateNorth ;
+; arbiter:AS|state.stateNorth            ; Merged with arbiter:AE|state.stateNorth ;
+; arbiter:AW|state.stateNorth            ; Merged with arbiter:AE|state.stateNorth ;
+; arbiter:AN|state.stateWest             ; Merged with arbiter:AE|state.stateWest  ;
+; arbiter:AS|state.stateWest             ; Merged with arbiter:AE|state.stateWest  ;
+; arbiter:AW|state.stateWest             ; Merged with arbiter:AE|state.stateWest  ;
+; arbiter:AN|state.stateSouth            ; Merged with arbiter:AE|state.stateSouth ;
+; arbiter:AS|state.stateSouth            ; Merged with arbiter:AE|state.stateSouth ;
+; arbiter:AW|state.stateSouth            ; Merged with arbiter:AE|state.stateSouth ;
+; arbiter:AN|state.stateEast             ; Merged with arbiter:AE|state.stateEast  ;
+; arbiter:AS|state.stateEast             ; Merged with arbiter:AE|state.stateEast  ;
+; arbiter:AW|state.stateEast             ; Merged with arbiter:AE|state.stateEast  ;
+; Total Number of Removed Registers = 28 ;                                         ;
++----------------------------------------+-----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 308   ;
+; Number of registers using Synchronous Clear  ; 128   ;
+; Number of registers using Synchronous Load   ; 220   ;
+; Number of registers using Asynchronous Clear ; 288   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 4     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; buffer_regs:BN|ena                     ; 3       ;
+; buffer_regs:BW|ena                     ; 3       ;
+; buffer_regs:BE|ena                     ; 3       ;
+; buffer_regs:BS|ena                     ; 3       ;
+; Total number of inverted registers = 4 ;         ;
++----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |projeto_CL|roteamento:RE|AUX[0]         ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |projeto_CL|roteamento:RW|AUX[1]         ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |projeto_CL|roteamento:RS|AUX[1]         ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |projeto_CL|roteamento:RN|AUX[0]         ;
+; 3:1                ; 31 bits   ; 62 LEs        ; 0 LEs                ; 62 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BE|\buff:ptr[17] ;
+; 3:1                ; 31 bits   ; 62 LEs        ; 0 LEs                ; 62 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BW|\buff:ptr[25] ;
+; 3:1                ; 31 bits   ; 62 LEs        ; 0 LEs                ; 62 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BS|\buff:ptr[13] ;
+; 3:1                ; 31 bits   ; 62 LEs        ; 0 LEs                ; 62 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BN|\buff:ptr[15] ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BE|stack[3][2]   ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BW|stack[3][0]   ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BS|stack[3][6]   ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BN|stack[3][0]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BE|stack[0][4]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BW|stack[0][1]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BS|stack[0][3]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BN|stack[0][2]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BE|stack[1][0]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BE|stack[2][7]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BW|stack[1][1]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BW|stack[2][3]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BS|stack[1][4]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BS|stack[2][4]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BN|stack[1][0]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |projeto_CL|buffer_regs:BN|stack[2][5]   ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; Yes        ; |projeto_CL|arbiter:AE|OUT_Package2[1]   ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; Yes        ; |projeto_CL|arbiter:AE|OUT_Package1[2]   ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |projeto_CL|arbiter:AE|OUT_Package1[0]   ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; Yes        ; |projeto_CL|arbiter:AW|OUT_Package2[3]   ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; Yes        ; |projeto_CL|arbiter:AW|OUT_Package1[3]   ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |projeto_CL|arbiter:AW|OUT_Package1[0]   ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; Yes        ; |projeto_CL|arbiter:AS|OUT_Package2[3]   ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; Yes        ; |projeto_CL|arbiter:AS|OUT_Package1[3]   ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |projeto_CL|arbiter:AS|OUT_Package2[0]   ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; Yes        ; |projeto_CL|arbiter:AN|OUT_Package2[1]   ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; Yes        ; |projeto_CL|arbiter:AN|OUT_Package1[3]   ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |projeto_CL|arbiter:AN|OUT_Package1[0]   ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |projeto_CL|buffer_regs:BE|Mux0          ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |projeto_CL|buffer_regs:BW|Mux0          ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |projeto_CL|buffer_regs:BS|Mux0          ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |projeto_CL|buffer_regs:BN|Mux0          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Mon Dec 05 08:45:40 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off projeto_CL -c projeto_CL
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file roteamento.vhd
+    Info (12022): Found design unit 1: roteamento-structural
+    Info (12023): Found entity 1: roteamento
+Info (12021): Found 2 design units, including 1 entities, in source file buffer_regs.vhd
+    Info (12022): Found design unit 1: buffer_regs-structural
+    Info (12023): Found entity 1: buffer_regs
+Info (12021): Found 2 design units, including 1 entities, in source file arbiter.vhd
+    Info (12022): Found design unit 1: arbiter-structural
+    Info (12023): Found entity 1: arbiter
+Info (12021): Found 2 design units, including 1 entities, in source file projeto_cl.vhd
+    Info (12022): Found design unit 1: projeto_CL-structural
+    Info (12023): Found entity 1: projeto_CL
+Info (12127): Elaborating entity "projeto_CL" for the top level hierarchy
+Info (12129): Elaborating entity "buffer_regs" using architecture "A:structural" for hierarchy "buffer_regs:BE"
+Info (12129): Elaborating entity "roteamento" using architecture "A:structural" for hierarchy "roteamento:RE"
+Info (12129): Elaborating entity "arbiter" using architecture "A:structural" for hierarchy "arbiter:AE"
+Warning (10492): VHDL Process Statement warning at arbiter.vhd(29): signal "clr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 16 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 722 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 34 input pins
+    Info (21059): Implemented 32 output pins
+    Info (21061): Implemented 656 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 4710 megabytes
+    Info: Processing ended: Mon Dec 05 08:45:43 2022
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:02
+
+

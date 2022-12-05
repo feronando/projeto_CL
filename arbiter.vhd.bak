@@ -1,0 +1,86 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+-- Árbitro
+entity arbiter is
+	port ( Package_East, Package_West, Package_South, Package_North : in std_logic_vector(7 downto 0);
+			 Router_East, Router_West, Router_South, Router_North : in std_logic;
+			 clk, clr : in std_logic;
+			 ena : in std_logic;
+			 Arbiter_East, Arbiter_West, Arbiter_South, Arbiter_North : out std_logic := '0';
+			 OUT_Package : out std_logic_vector(7 downto 0);
+			 ptr2 : out natural
+	);
+end arbiter;
+
+architecture structural of arbiter is
+
+	--type state_type is (stateNorth, stateSouth, stateEast, stateWest);
+	--signal state : state_type;
+	--shared variable buffNorth, buffSouth, buffEast, buffWest : std_logic;
+	
+	signal buff_router : std_logic_vector(0 to 3) := "0000";
+	
+begin 
+	arbiter : process(clk, clr, ena, buff_router)
+		variable ptr : natural := 0;
+	begin
+		if (clr = '1') then
+			OUT_Package <= "00000000";
+			buff_router <= "0000";
+			ptr := 0;
+		elsif rising_edge(clk) and ena = '1' then
+		
+			buff_router(0) <= Router_East;
+			buff_router(1) <= Router_West;
+			buff_router(2) <= Router_South;
+			buff_router(3) <= Router_North;
+		
+			if (buff_router(ptr) = '1') then
+				buff_router(ptr) <= '0';
+				case ptr is
+					when 0 =>
+						OUT_Package(7 downto 4) <= std_logic_vector(signed(Package_East(7 downto 4)) - 1);
+						OUT_Package(3 downto 0) <= Package_East(3 downto 0);
+						Arbiter_East <= '1';
+						Arbiter_West <= '0';
+						Arbiter_South <= '0';
+						Arbiter_North <= '0';
+					when 1 =>
+						OUT_Package(7 downto 4) <= std_logic_vector(signed(Package_West(7 downto 4)) + 1);
+						OUT_Package(3 downto 0) <= Package_West(3 downto 0);
+						Arbiter_East <= '0';
+						Arbiter_West <= '1';
+						Arbiter_South <= '0';
+						Arbiter_North <= '0';
+					when 2 =>
+						OUT_Package(7 downto 4) <= Package_South(7 downto 4);
+						OUT_Package(3 downto 0) <= std_logic_vector(signed(Package_South(3 downto 0)) - 1);
+						Arbiter_East <= '0';
+						Arbiter_West <= '0';
+						Arbiter_South <= '1';
+						Arbiter_North <= '0';
+					when 3 =>
+						OUT_Package(7 downto 4) <= Package_North(7 downto 4);
+						OUT_Package(3 downto 0) <= std_logic_vector(signed(Package_North(3 downto 0)) + 1);
+						Arbiter_East <= '0';
+						Arbiter_West <= '0';
+						Arbiter_South <= '0';
+						Arbiter_North <= '1';
+					when others =>
+						OUT_Package <= "00000000";
+						ptr := 0;
+						Arbiter_East <= '0';
+						Arbiter_West <= '0';
+						Arbiter_South <= '0';
+						Arbiter_North <= '0';
+				end case;
+			end if;
+			
+			ptr2 <= ptr;
+			
+			ptr := (ptr + 1) rem 4;
+		end if;
+	end process;
+end structural;

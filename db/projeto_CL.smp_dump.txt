@@ -1,0 +1,28 @@
+
+State Machine - |projeto_CL|arbiter:AN|state
+Name state.stateNorth state.stateSouth state.stateWest state.stateEast 
+state.stateEast 0 0 0 0 
+state.stateWest 0 0 1 1 
+state.stateSouth 0 1 0 1 
+state.stateNorth 1 0 0 1 
+
+State Machine - |projeto_CL|arbiter:AS|state
+Name state.stateNorth state.stateSouth state.stateWest state.stateEast 
+state.stateEast 0 0 0 0 
+state.stateWest 0 0 1 1 
+state.stateSouth 0 1 0 1 
+state.stateNorth 1 0 0 1 
+
+State Machine - |projeto_CL|arbiter:AW|state
+Name state.stateNorth state.stateSouth state.stateWest state.stateEast 
+state.stateEast 0 0 0 0 
+state.stateWest 0 0 1 1 
+state.stateSouth 0 1 0 1 
+state.stateNorth 1 0 0 1 
+
+State Machine - |projeto_CL|arbiter:AE|state
+Name state.stateNorth state.stateSouth state.stateWest state.stateEast 
+state.stateEast 0 0 0 0 
+state.stateWest 0 0 1 1 
+state.stateSouth 0 1 0 1 
+state.stateNorth 1 0 0 1 

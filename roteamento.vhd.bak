@@ -1,0 +1,42 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+-- Roteamento
+entity roteamento is
+	port ( IN_Package : in std_logic_vector(7 downto 0);
+			 clk : in std_logic;
+			 arbiter : out std_logic_vector(0 to 3)
+	);
+end roteamento;
+
+architecture structural of roteamento is
+
+	signal X : signed(3 downto 0) := signed(IN_Package(7 downto 4));
+	signal Y : signed(3 downto 0) := signed(IN_Package(3 downto 0));
+	
+	signal AUX : std_logic_vector(0 to 3) := "0000";
+
+begin
+	routing : process (clk, X, Y, AUX)
+	begin
+		if rising_edge(clk) then
+			AUX <= "0000";
+			if (X /= 0) then
+				if (X > 0) then
+					AUX(0) <= '1';
+				else
+					AUX(1) <= '1';
+				end if;
+			else 
+				if (Y > 0) then
+					AUX(2) <= '1';
+				else
+					AUX(3) <= '1';
+				end if;
+			end if;
+		end if;
+	end process;
+	
+	arbiter <= AUX;
+end structural;

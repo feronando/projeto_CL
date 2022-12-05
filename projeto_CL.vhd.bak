@@ -1,0 +1,74 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+-- Projeto final de Circuitos Lógicos
+entity projeto_CL is
+	port ( IN_East, IN_West, IN_South, IN_North : in std_logic_vector(7 downto 0);
+			 clk, clr : in std_logic;
+			 OUT_East, OUT_West, OUT_South, OUT_North : out std_logic_vector(7 downto 0)
+	);
+end projeto_CL;
+
+architecture structural of projeto_CL is
+	component buffer_regs
+		port ( IN_Package : in std_logic_vector(7 downto 0);
+				 clk, clr : in std_logic;
+			    arb : in std_logic;
+			    OUT_Package : out std_logic_vector(7 downto 0)
+		);
+	end component;
+	
+	for all : buffer_regs use entity work.buffer_regs(structural);
+	-- 
+	component roteamento
+		port ( IN_Package : in std_logic_vector(7 downto 0);
+				 clk : in std_logic;
+				 Arbiter_East, Arbiter_West, Arbiter_South, Arbiter_North : out std_logic
+		);
+	end component;
+	
+	for all : roteamento use entity work.roteamento(structural);
+	-- 
+	component arbiter
+		port ( IN_Package1, IN_Package2, IN_Package3 : in std_logic_vector(7 downto 0);
+				 OUT_Router1, OUT_Router2, OUT_Router3 : in std_logic;
+				 clk, clr : in std_logic;
+				 OUT_Arbiter1, OUT_Arbiter2, OUT_Arbiter3 : out std_logic := '0';
+				 OUT_Package : out std_logic_vector(7 downto 0)
+		);
+	end component;
+	
+	for all : arbiter use entity work.arbiter(structural);
+	-- 
+	signal AUX_BUFFE, AUX_BUFFW, AUX_BUFFS, AUX_BUFFN : std_logic;
+	
+	signal AUX_ROUTE1, AUX_ROUTW1, AUX_ROUTS1, AUX_ROUTN1 : std_logic;
+	signal AUX_ROUTE2, AUX_ROUTW2, AUX_ROUTS2, AUX_ROUTN2 : std_logic;
+	signal AUX_ROUTE3, AUX_ROUTW3, AUX_ROUTS3, AUX_ROUTN3 : std_logic;
+	signal AUX_ROUTE4, AUX_ROUTW4, AUX_ROUTS4, AUX_ROUTN4 : std_logic;
+	
+	signal AUX_ARBW1, AUX_ARBS1, AUX_ARBN1 : std_logic;
+	signal AUX_ARBE2, AUX_ARBS2, AUX_ARBN2 : std_logic;
+	signal AUX_ARBE3, AUX_ARBW3, AUX_ARBN3 : std_logic;
+	signal AUX_ARBE4, AUX_ARBW4, AUX_ARBS4 : std_logic;
+	
+	signal AUX_PACKAGEE, AUX_PACKAGEW, AUX_PACKAGES, AUX_PACKAGEN : std_logic_vector(7 downto 0);
+begin
+	BE : buffer_regs port map (IN_East, clk, clr, AUX_BUFFE, AUX_PACKAGEE);
+	BW : buffer_regs port map (IN_West, clk, clr, AUX_BUFFW, AUX_PACKAGEW);
+	BS : buffer_regs port map (IN_South, clk, clr, AUX_BUFFS, AUX_PACKAGES);
+	BN : buffer_regs port map (IN_North, clk, clr, AUX_BUFFN, AUX_PACKAGEN);
+	
+	RE : router port map (AUX_PACKAGEE, clk, AUX_ROUTE1, AUX_ROUTW1, AUX_ROUTS1, AUX_ROUTN1);
+	RW : router port map (AUX_PACKAGEW, clk, AUX_ROUTE2, AUX_ROUTW2, AUX_ROUTS2, AUX_ROUTN2);
+	RS : router port map (AUX_PACKAGES, clk, AUX_ROUTE3, AUX_ROUTW3, AUX_ROUTS3, AUX_ROUTN3);
+	RN : router port map (AUX_PACKAGEN, clk, AUX_ROUTE4, AUX_ROUTW4, AUX_ROUTS4, AUX_ROUTN4);
+	
+	
+	AE : arbiter port map (AUX_PACKAGEW, AUX_PACKAGES, AUX_PACKAGEN, AUX_ROUTE2, AUX_ROUTE3, AUX_ROUTE4, clk, clr, AUX_ARBW1, AUX_ARBS1, AUX_ARBN1, OUT_East);
+	AW : arbiter port map (AUX_PACKAGEE, AUX_PACKAGES, AUX_PACKAGEN, AUX_ROUTW1, AUX_ROUTW3, AUX_ROUTW4, clk, clr, AUX_ARBE2, AUX_ARBS2, AUX_ARBN2, OUT_West);
+	AS : arbiter port map (AUX_PACKAGEE, AUX_PACKAGEW, AUX_PACKAGEN, AUX_ROUTS1, AUX_ROUTS2, AUX_ROUTS4, clk, clr, AUX_ARBE3, AUX_ARBW3, AUX_ARBN3, OUT_South);
+	AN : arbiter port map (AUX_PACKAGEE, AUX_PACKAGEW, AUX_PACKAGES, AUX_ROUTN1, AUX_ROUTN2, AUX_ROUTN3, clk, clr, AUX_ARBE4, AUX_ARBW4, AUX_ARBS4, OUT_North);
+	
+end structural;
